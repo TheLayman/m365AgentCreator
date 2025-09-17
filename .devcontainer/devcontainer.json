@@ -5,10 +5,7 @@
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "onCreateCommand": [
-    "bash",
-    ".devcontainer/prebuild-setup.sh"
-  ],
+  "onCreateCommand": ["bash", ".devcontainer/prebuild-setup.sh"],
   "updateContentCommand": "cd myagent && npm install",
   "postStartCommand": "echo 'Codespace ready! M365 Agent Builder environment is pre-configured.'",
   "customizations": {
@@ -26,21 +23,21 @@
       }
     }
   },
-  "forwardPorts": [3978, 56150, 3000],
+  "forwardPorts": [56150, 3000],
   "portsAttributes": {
-    "3978": {
-      "label": "bot",
-      "visibility": "public",
-      "protocol": "http"
-    },
+    // "3978": {
+    //   "label": "bot",
+    //   "visibility": "public",
+    //   "protocol": "http"
+    // },
     "56150": {
-      "label": "playGroundUI", 
+      "label": "playGroundUI",
       "visibility": "public",
       "protocol": "http"
     },
     "3000": {
       "label": "playGroundModified",
-      "visibility": "public", 
+      "visibility": "public",
       "protocol": "http"
     }
   },
@@ -49,4 +46,3 @@
     "CODESPACE_PREBUILD": "true"
   }
 }
-

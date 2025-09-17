@@ -20,7 +20,7 @@ npm --version
 # Install global tools with npm cache optimization
 echo "🛠️ Installing global tools..."
 npm config set cache /tmp/npm-cache --global
-npm install -g @microsoft/m365agentstoolkit-cli @microsoft/teams-app-test-tool
+npm install -g @microsoft/m365agentstoolkit-cli @microsoft/m365agentsplayground
 
 # Verify ATK installation
 echo "✅ Verifying ATK installation..."
