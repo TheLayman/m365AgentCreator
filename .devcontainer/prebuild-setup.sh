@@ -26,9 +26,13 @@ npm install -g @microsoft/m365agentstoolkit-cli @microsoft/m365agentsplayground
 echo "✅ Verifying ATK installation..."
 atk --version
 
-# Create optimized M365 Agent project
-echo "📂 Creating M365 Agent project..."
-atk new -c basic-custom-engine-agent -l typescript -n myagent -i false
+# Create M365 Agent project only if it doesn't already exist (idempotent)
+if [ ! -d "myagent" ]; then
+  echo "Creating M365 Agent project..."
+  atk new -c basic-custom-engine-agent -l typescript -n myagent -i false
+else
+  echo "myagent directory already exists, skipping project creation."
+fi
 
 # Navigate to project and install dependencies
 cd myagent
@@ -83,7 +87,7 @@ npm cache clean --force
 cd ..
 
 # Set environment variable to indicate prebuild completion
-echo "export CODESPACE_PREBUILD=true" >> ~/.bashrc
+grep -q CODESPACE_PREBUILD ~/.bashrc 2>/dev/null || echo "export CODESPACE_PREBUILD=true" >> ~/.bashrc
 
 # Create prebuild completion marker
 echo "$(date): Prebuild completed successfully" > .prebuild-complete
