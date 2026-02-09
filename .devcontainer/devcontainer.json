@@ -3,7 +3,10 @@
   "image": "mcr.microsoft.com/devcontainers/typescript-node:20-bullseye",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
   },
   "onCreateCommand": ["bash", ".devcontainer/prebuild-setup.sh"],
   "updateContentCommand": "cd myagent && npm install",
@@ -23,13 +26,13 @@
       }
     }
   },
-  "forwardPorts": [56150, 3000],
+  "forwardPorts": [3978, 56150, 3000],
   "portsAttributes": {
-    // "3978": {
-    //   "label": "bot",
-    //   "visibility": "public",
-    //   "protocol": "http"
-    // },
+    "3978": {
+      "label": "bot",
+      "visibility": "public",
+      "protocol": "http"
+    },
     "56150": {
       "label": "playGroundUI",
       "visibility": "public",
